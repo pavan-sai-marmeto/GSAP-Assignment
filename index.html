@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animation</title>
+  <style>
+    body {
+      height: 200vh; 
+      margin: 0;
+    }
+    .box {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+  
+</head>
+<body>
+  <div class="box"></div>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".box", {
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 3
+      },
+      x: () => window.innerWidth - 200,
+      y: () => window.innerHeight - 200,
+      width: 200,
+      height: 200,
+      duration: 1
+    });
+  </script>
+</body>
+</html> 
